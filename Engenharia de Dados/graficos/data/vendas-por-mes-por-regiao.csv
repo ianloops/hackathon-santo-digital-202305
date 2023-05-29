@@ -1,0 +1,98 @@
+﻿month,Region,salesVolume
+1,Canada,8
+1,France,22
+1,Germany,21
+1,Southwest,34
+1,Northwest,25
+1,Southeast,1
+1,United Kingdom,34
+1,Australia,97
+2,Germany,32
+2,United Kingdom,34
+2,France,26
+2,Canada,7
+2,Northwest,25
+2,Southwest,35
+2,Australia,108
+3,Australia,104
+3,Germany,28
+3,United Kingdom,36
+3,Northwest,25
+3,France,32
+3,Canada,15
+3,Southwest,26
+4,France,35
+4,Germany,39
+4,United Kingdom,30
+4,Southwest,31
+4,Australia,108
+4,Northwest,40
+4,Canada,7
+5,France,33
+5,Australia,111
+5,Germany,37
+5,United Kingdom,39
+5,Northeast,1
+5,Southwest,50
+5,Canada,18
+5,Central,1
+5,Northwest,38
+5,Southeast,1
+6,Germany,33
+6,United Kingdom,32
+6,Australia,108
+6,Canada,4
+6,France,52
+6,Southwest,54
+6,Northwest,29
+7,Australia,359
+7,United Kingdom,202
+7,Canada,65
+7,Germany,180
+7,France,144
+7,Southwest,279
+7,Northwest,158
+8,Southwest,786
+8,Australia,701
+8,Northwest,547
+8,Southeast,2
+8,Canada,618
+8,Germany,320
+8,Northeast,2
+8,United Kingdom,403
+8,France,357
+9,Northwest,555
+9,Southwest,732
+9,Germany,328
+9,Canada,527
+9,Australia,842
+9,United Kingdom,441
+9,France,375
+10,Southeast,2
+10,Southwest,881
+10,Northwest,596
+10,Canada,447
+10,Central,4
+10,France,298
+10,Australia,902
+10,United Kingdom,525
+10,Germany,393
+11,Southeast,2
+11,Canada,608
+11,Southwest,838
+11,Northwest,667
+11,Central,3
+11,Australia,869
+11,France,339
+11,Germany,302
+11,United Kingdom,462
+11,Northeast,2
+12,Canada,656
+12,Central,2
+12,Northwest,808
+12,France,541
+12,Southwest,1081
+12,Northeast,7
+12,Australia,937
+12,United Kingdom,635
+12,Germany,499
