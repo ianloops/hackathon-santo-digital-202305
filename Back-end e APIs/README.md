@@ -12,7 +12,8 @@
 *Python instalado*<br>
 *Pip instalado*<br>
 *Instância SQL SERVER com o banco restaurado pelo arquivo **AdventureWorks.bak**(Mesmo utilizado para <br>
-rodar os arquivos sql do desafio de Engenharia de dados)*
+rodar os arquivos sql do desafio de Engenharia de dados)*<br>
+*Docker instalado*
 
 ### Arquivos
 *AdventureWorks.bak*: Arquivo de backup do banco<br>
@@ -20,29 +21,32 @@ rodar os arquivos sql do desafio de Engenharia de dados)*
 *main.py*: Arquivo principal com a chamada do app e rotas da API<br>
 *product.py*: Classe para representar o modelo de dados do produto<br>
 *requirements.txt*: Arquivo com dependências necessárias para funcionamento da API<br>
-*service.py*: Camada de serviço, definição das funções chamados por cada rota
+*service.py*: Camada de serviço, definição das funções chamados por cada rota<br>
+*Dockerfile*: Arquivo Dockerfile utilizado para subir a aplicação com Docker
 
-### Instalando as dependências
----
-
-Para instalar as dependências com o pip basta executar:
-
-```bash
-$ pip install -r requirements.txt 
-```
 
 ### Configurando conexão com banco
 ---
 
-Acesse o arquivo **connection.py** e altere o valor da variável "server" para o nome de sua instância SQL Server
+Acesse o arquivo **connection.py** e altere o valor das variáveis "server" para o nome de sua instância SQL Server, <br>
+"password" para a senha do usuário padrão sa e "host" para o ipv4 da sua máquina (verificado com o comando "ipconfig")
 
-### Executando a API
+### Buildando imagem docker
 ---
 
-Para executar a API use o comando:
+Para buildar execute o comando:
 
 ```bash
-$ uvicorn main:app
+$ docker build -t adventureworksapi .
+```
+
+### Executando imagem docker
+---
+
+Para executar o docker com a API use o comando:
+
+```bash
+$ docker run -p 8000:8000 adventureworksapi
 ```
 
 Assim a aplicação vai estar no endereço `http://localhost:8000`.

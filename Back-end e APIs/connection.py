@@ -1,12 +1,12 @@
-import pyodbc
+import pymssql
 
-server = "MSSQL"
-
+server = "server"
+database = "AdventureWorks"
+user = "sa"
+password = "senha"
+host="172.00.10.30"
 
 # Função para estabelecer a conexão com o banco de dados
 def connect():
-    db = pyodbc.connect("Driver={SQL Server Native Client 11.0};"
-                        "Server="+server+";"
-                        "Database=AdventureWorks;"
-                        "Trusted_connection=yes;")
+    db = pymssql.connect(server=server, user=user, password=password, database=database, host=host)
     return db
