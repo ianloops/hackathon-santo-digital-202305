@@ -4,13 +4,11 @@
 *Python*: Linguagem utilizada<br>
 *SQL SERVER*: Banco utilizado<br>
 *FastAPI*: Utilizado para desenvolvimento da API documentada com Swagger<br>
-*pyodbc*: Utilizado para conectar com o banco<br>
+*pymssql*: Utilizado para conectar com o banco<br>
 *pydantic*: Utilizado para criar o modelo de dados do produto<br>
 *uvicorn*: Servidor onde a API executa
 
 ### Requisitos
-*Python instalado*<br>
-*Pip instalado*<br>
 *Instância SQL SERVER com o banco restaurado pelo arquivo **AdventureWorks.bak**(Mesmo utilizado para <br>
 rodar os arquivos sql do desafio de Engenharia de dados)*<br>
 *Docker instalado*
