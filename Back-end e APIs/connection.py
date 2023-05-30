@@ -1,10 +1,11 @@
 import pymssql
 
-server = "server"
+server = "mssql"
 database = "AdventureWorks"
 user = "sa"
-password = "senha"
-host="172.00.10.30"
+password = "@dv202305"
+host = "mssql"
+
 
 # Função para estabelecer a conexão com o banco de dados
 def connect():
