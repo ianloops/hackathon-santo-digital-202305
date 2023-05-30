@@ -7,7 +7,7 @@ def get_products_by_id(id: int):
     cursor = db.cursor()
 
     try:
-        sql = "SELECT * FROM AdventureWorks_Products WHERE ProductKey = ?"
+        sql = "SELECT * FROM AdventureWorks_Products WHERE ProductKey = %s"
         cursor.execute(sql, (id,))
         product = cursor.fetchone()
 
@@ -41,7 +41,7 @@ def remove_products(id: int):
     cursor = db.cursor()
 
     try:
-        sql_verificar_produto = "SELECT * FROM AdventureWorks_Products WHERE ProductKey = ?"
+        sql_verificar_produto = "SELECT * FROM AdventureWorks_Products WHERE ProductKey = %s"
         cursor.execute(sql_verificar_produto, (id,))
         existing_product = cursor.fetchone()
 
@@ -49,7 +49,7 @@ def remove_products(id: int):
             return {"message": "Produto não encontrado."}
 
         # Remover o produto com base no ID
-        sql_remove_product = "DELETE FROM AdventureWorks_Products WHERE ProductKey = ?"
+        sql_remove_product = "DELETE FROM AdventureWorks_Products WHERE ProductKey = %s"
         cursor.execute(sql_remove_product, (id,))
         db.commit()
 
@@ -62,7 +62,7 @@ def remove_products(id: int):
         db.close()
 
 
-def best_sellers_by_category(categoria: int):
+def best_sellers_by_category(category: int):
     db = connect()
     cursor = db.cursor()
 
@@ -80,9 +80,9 @@ def best_sellers_by_category(categoria: int):
                     sales.ProductKey = products.ProductKey JOIN AdventureWorks_Product_Subcategories subcategories ON 
                     products.ProductSubcategoryKey = subcategories.ProductSubcategoryKey JOIN 
                     AdventureWorks_Product_Categories categories ON subcategories.ProductCategoryKey = 
-                    categories.ProductCategoryKey WHERE categories.ProductCategoryKey=? GROUP BY products.ProductKey, 
+                    categories.ProductCategoryKey WHERE categories.ProductCategoryKey=%s GROUP BY products.ProductKey, 
                     products.ProductName ORDER BY quantity DESC"""
-        cursor.execute(sql, categoria)
+        cursor.execute(sql, category)
         products = cursor.fetchall()
 
         products_list = []
@@ -214,7 +214,7 @@ def insert_product(p: Product):
     try:
         sql = "INSERT INTO AdventureWorks_Products (ProductKey,ProductSubcategoryKey,ProductSKU,ProductName" \
               ",ModelName,ProductDescription,ProductColor,ProductSize,ProductStyle,ProductCost,ProductPrice)" \
-              "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+              "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
         cursor.execute(sql, (p.productKey, p.productSubcategoryKey, p.productSKU, p.productName, p.modelName,
                              p.productDescription, p.productColor, p.productSize, p.productStyle, p.productCost,
                              p.productPrice))
@@ -263,14 +263,14 @@ def get_products():
         db.close()
 
 
-def update_products(self: int, p: Product):
+def update_products(p: Product):
     p.productKey = int
     db = connect()
     cursor = db.cursor()
 
     try:
-        sql_product_check = "SELECT * FROM AdventureWorks_Products WHERE ProductKey = ?"
-        cursor.execute(sql_product_check, (self,))
+        sql_product_check = "SELECT * FROM AdventureWorks_Products WHERE ProductKey = %s"
+        cursor.execute(sql_product_check, (p.productKey,))
         existing_product = cursor.fetchone()
 
         if not existing_product:
@@ -278,17 +278,17 @@ def update_products(self: int, p: Product):
 
         sql_update_product = """
                 UPDATE AdventureWorks_Products
-                SET ProductSubcategoryKey = ?,
-                    ProductSKU = ?,
-                    ProductName = ?,
-                    ModelName = ?,
-                    ProductDescription = ?,
-                    ProductColor = ?,
-                    ProductSize = ?,
-                    ProductStyle = ?,
-                    ProductCost = ?,
-                    ProductPrice = ?
-                WHERE ProductKey = ?
+                SET ProductSubcategoryKey = %s,
+                    ProductSKU = %s,
+                    ProductName = %s,
+                    ModelName = %s,
+                    ProductDescription = %s,
+                    ProductColor = %s,
+                    ProductSize = %s,
+                    ProductStyle = %s,
+                    ProductCost = %s,
+                    ProductPrice = %s
+                WHERE ProductKey = %s
             """
         values = (
             p.productSubcategoryKey,
@@ -301,7 +301,7 @@ def update_products(self: int, p: Product):
             p.productStyle,
             p.productCost,
             p.productPrice,
-            self
+            p.productKey
         )
         cursor.execute(sql_update_product, values)
         db.commit()
